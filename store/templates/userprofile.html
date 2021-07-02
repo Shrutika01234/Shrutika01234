@@ -1,0 +1,197 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>PHPJabbers.com | Free Book Online Store Website Template</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}" />
+		<link rel="stylesheet" href="{% static 'assets/css/main.css' %}" />
+		<noscript><link rel="stylesheet" href="{% static 'assets/css/noscript.css' %}" /></noscript>
+	</head>
+	<body class="is-preload">
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Header -->
+				<header id="header">
+					<div class="inner">
+
+						<!-- Logo -->
+							<a href="index.html" class="logo">
+									<span class="fa fa-book"></span> <span class="title">Book Online Store Website</span>
+								</a>
+
+						<!-- Nav -->
+							<nav>
+								<ul>
+									<li><a href="#menu">Menu</a></li>
+								</ul>
+							</nav>
+
+					</div>
+				</header>
+
+			<!-- Menu -->
+				<nav id="menu">
+						<h2>Menu</h2>
+						{% if user.id is not None %}
+						<h2>{{ user.first_name }}</h2>
+						<a href="{% url 'userprofile'%}" ><img src="{{ request.session.userimage }}" style="border-radius: 50%; hight: 90px; width: 90px"></a><br>
+
+						<li><a href="/userprofile/">My Profile</a></li>
+				        <ul>
+						<li><a href="/logout_form/">logout</a></li>
+						</ul>
+					
+		                
+						{% else %}
+                        <h2><a href="{% url 'login' %}">Login/Signup</a></h2>
+						{% endif %}
+						<ul>
+							<li><a href="{% url 'home' %}" class="active">Home</a></li>
+
+							<li><a href="{% url 'product' %}">Products</a></li>
+                             
+							
+							<li><a href="{% url 'shopcart' %}">shopcart</a></li>
+                            <li><a href="/signup_form/">SignUp</a></li>
+							<li>
+								<a href="#" class="dropdown-toggle">About</a>
+
+								<ul>
+									<li><a href="{% url 'about' %}">About Us</a></li>
+									<li><a href="{% url 'blog' %}">Blog</a></li>
+									<li><a href="{% url 'testimonials' %}">Testimonials</a></li>
+									
+									<li><a href="{% url 'terms'%}">Terms</a></li>
+									
+								</ul>
+							</li>
+
+							<li><a href="{% url 'contact' %}">Contact Us</a></li>
+						</ul>
+					</nav>
+
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<h1>My Profile</h1>
+						</div>
+					</div>
+
+    <div id="breadcrumb">
+        <div class="container">
+            <ul class="breadcrumb">
+                <li><a href="/">{{ user.first_name }}</a></li>
+                <li class="active">{{ user.last_name }}</li>
+            </ul>
+        </div>
+    </div>
+    <!-- /BREADCRUMB -->
+
+    <!-- section -->
+    <div class="section">
+        <!-- container -->
+        <div class="container">
+            <!-- row -->
+            <div class="row">
+
+                <div class="col-md-3">
+                    {% include "user_panel.html" %}
+                </div>
+
+                <div class="col-md-9">
+                    <div class="billing-details">
+                        <div class="section-title">
+                            <h3 class="title">User Profile Inf.</h3>
+                        </div>
+                    </div>
+                     <table class="shopping-cart-table table">
+                        <tr>
+                            <th class="text-left">
+                               <div class="field half text-right">
+											<ul class="actions">
+											<a href= "/update"><li><input type="submit" value="Update Profile" class="primary"></li><a>
+											</ul>
+										</div>
+                              <div class="field half text-right">
+											<ul class="actions">
+											<a href= "/password"><li><input type="submit" value="Change Password" class="primary"></li><a>
+											</ul>
+										</div>
+                            </th>
+                            <td><img src="{{ profile.image.url }}" style="border-radius: 45px; height: 200px "></td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Name Surname</th>
+                            <td class="text-left">{{ user.first_name}} {{ user.last_name}} </td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Email</th>
+                            <td class="text-left">{{ profile.user.email}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Phone</th>
+                            <td class="text-left">{{ profile.phone}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Addres</th>
+                            <td class="text-left">{{ profile.address}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">City</th>
+                            <td class="text-left">{{ profile.city}}</td>
+                        </tr>
+                        <tr>
+                            <th class="text-left">Country</th>
+                            <td class="text-left">{{ profile.country}}</td>
+                        </tr>
+
+                    </table>
+                </div>
+
+
+            </div>
+            <!-- /row -->
+        </div>
+        <!-- /container -->
+    </div>
+    <!-- /section -->
+
+<footer id="footer">
+	<h2>Contact Info</h2>
+
+								<ul class="alt">
+									<li><span class="fa fa-envelope-o"></span> <a href="#">contact@company.com</a></li>
+									<li><span class="fa fa-phone"></span> +1 333 4040 5566 </li>
+									<li><span class="fa fa-map-pin"></span> 212 Barrington Court New York, ABC 10001 United States of America</li>
+								</ul>
+
+								<h2>Follow Us</h2>
+
+								<ul class="icons">
+									<li><a href="#" class="icon style2 fa-twitter"><span class="label">Twitter</span></a></li>
+									<li><a href="#" class="icon style2 fa-facebook"><span class="label">Facebook</span></a></li>
+									<li><a href="#" class="icon style2 fa-instagram"><span class="label">Instagram</span></a></li>
+									<li><a href="#" class="icon style2 fa-linkedin"><span class="label">LinkedIn</span></a></li>
+								</ul>
+							</section>
+
+							<ul class="copyright">
+								<li>2020 Company Name </li>
+								
+							</ul>
+						</div>
+					</footer>
+				
+
+		<!-- Scripts -->
+			<script src="{% static 'assets/js/jquery.min.js' %}"></script>
+			<script src="{% static 'assets/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrolly.min.js' %}"></script>
+			<script src="{% static 'assets/js/jquery.scrollex.min.js' %}"></script>
+			<script src="{% static 'assets/js/main.js' %}"></script>
+	</body>
+</html>		

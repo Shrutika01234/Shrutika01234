@@ -1,0 +1,23 @@
+
+
+
+<html>
+{% for rs in shopcart %} 
+ 
+ 
+ {{ rs.product.title }} 
+ {{ rs.product.price }} 
+ {{ rs.product.quantity }}
+
+<p>
+    <a href="/deletefromcart/{{ rs.id }}/" onclick="return confirm('delete')">delete</a>
+</p>
+
+{% endfor %}
+ 
+
+<h1>{{ total }}</h1>
+
+<a href="/orderproduct">Place Order</a>
+
+</html>

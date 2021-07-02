@@ -1,0 +1,15 @@
+{% if messages %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{message.tags}}" role="alert">
+                            {{ message |safe }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+<form method="post" action="" >
+  {% csrf_token %}
+   <table style="">
+   {{ form.as_table }}
+   </table>
+   <input type="submit" class="primary" value="Sign up">
+</form>
